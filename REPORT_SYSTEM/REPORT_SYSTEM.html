@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>실험 기록 시스템</title>
+</head>
+<body>
+
+<h1>실험 기록 시스템</h1>
+
+<form id="expForm">
+    실험명: <input type="text" id="name" required><br><br>
+    날짜: <input type="date" id="date" required><br><br>
+    담당자: <input type="text" id="person" required><br><br>
+    결과값: <input type="number" id="result" required><br><br>
+    <button type="submit">저장</button>
+</form>
+<button onclick="downloadExcel()">엑셀 다운로드</button>
+<h2>🔍 날짜 검색</h2>
+<input type="date" id="searchDate">
+<button onclick="search()">검색</button>
+<button onclick="resetList()">전체보기</button>
+
+<h2>기록 목록</h2>
+<ul id="list"></ul>
+
+<h2>통계</h2>
+<p id="stats"></p>
+
+<h2>📊 실험결과 그래프</h2>
+<canvas id="myChart" width="400" height="200"></canvas>
+
+<script>
+function downloadExcel() {
+    let csv = "날짜,실험명,담당자,결과값\n";
+
+    data.forEach(item => {
+        let row = item.date + "," + item.name + "," + item.person + "," + item.result;
+        csv += row + "\n";
+    });
+
+    // 파일 생성
+    let blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+
+    let link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = "experiment_data.csv";
+    link.click();
+}
+
+let data = JSON.parse(localStorage.getItem("experiments")) || [];
+
+function saveData() {
+    localStorage.setItem("experiments", JSON.stringify(data));
+}
+
+// 화면 출력 함수
+function render(filteredData = data) {
+    const list = document.getElementById("list");
+    list.innerHTML = "";
+
+    let sum = 0;
+
+    filteredData.forEach((item, index) => {
+        let li = document.createElement("li");
+
+        let formattedDate = item.date.replaceAll("-", "/");
+
+        li.innerText = formattedDate + " : " + item.name +
+                       " (담당자: " + item.person +
+                       ") 결과: " + item.result + " ";
+
+        // 삭제 버튼 추가
+        let btn = document.createElement("button");
+        btn.innerText = "삭제";
+        btn.onclick = function() {
+            data.splice(index, 1);
+            saveData();
+            render();
+        };
+
+        li.appendChild(btn);
+        list.appendChild(li);
+
+        sum += Number(item.result);
+    });
+
+    // 통계
+    let stats = document.getElementById("stats");
+    if(filteredData.length > 0) {
+        let avg = sum / filteredData.length;
+        stats.innerText = "평균 결과값: " + avg.toFixed(2);
+    } else {
+        stats.innerText = "데이터 없음";
+    }
+
+
+}
+
+// 저장 이벤트
+document.getElementById("expForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    let newData = {
+        name: document.getElementById("name").value,
+        date: document.getElementById("date").value,
+        person: document.getElementById("person").value,
+        result: document.getElementById("result").value
+    };
+
+    data.push(newData);
+    saveData();
+    render();
+
+    this.reset();
+});
+
+// 날짜 검색
+function search() {
+    let searchDate = document.getElementById("searchDate").value;
+    let filtered = data.filter(item => item.date === searchDate);
+    render(filtered);
+}
+
+// 전체 보기
+function resetList() {
+    render();
+}
+
+let chart; // 그래프 변수
+
+function drawChart(filteredData = data) {
+    let labels = [];
+    let values = [];
+
+    filteredData.forEach(item => {
+        labels.push(item.date.replaceAll("-", "/"));
+        values.push(Number(item.result));
+    });
+
+    const ctx = document.getElementById('myChart').getContext('2d');
+
+    // 기존 그래프 삭제
+    if(chart) {
+        chart.destroy();
+    }
+
+    chart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: '결과값',
+                data: values
+            }]
+        }
+    });
+}
+
+
+// 처음 실행
+render();
+drawChart(filteredData);
+</script>
+
+</body>
+</html>
