@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>미래화학 주식회사</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Malgun Gothic', sans-serif;
+  margin: 0;
+  background: #eef3f7;
+}
+
+/* 헤더 */
+.header {
+  padding: 80px 30px;
+  text-align: center;
+  background: linear-gradient(rgba(0,40,80,0.6), rgba(0,40,80,0.6)), 
+              url("https://images.unsplash.com/photo-1581093458791-9d2f5e3b3c4c");
+  background-size: cover;
+  color: white;
+}
+
+.header h1 {
+  font-size: 50px;
+  margin: 0;
+}
+
+.header p {
+  font-size: 20px;
+  color: #cfd8e3;
+}
+
+/* 메뉴바 */
+.topnav {
+  position: sticky;
+  top: 0;
+  background: #0d2b45;
+  overflow: hidden;
+  z-index: 1000;
+}
+
+.topnav a {
+  float: left;
+  color: white;
+  padding: 16px 20px;
+  text-decoration: none;
+}
+
+.topnav a:hover {
+  background: #1f4e79;
+}
+
+/* 레이아웃 */
+.row::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.leftcolumn {
+  float: left;
+  width: 70%;
+}
+
+.rightcolumn {
+  float: left;
+  width: 30%;
+  padding-left: 20px;
+}
+
+/* 카드 */
+.card {
+  background: white;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 10px;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+/* 제목 */
+h2 {
+  border-left: 5px solid #1f4e79;
+  padding-left: 10px;
+}
+
+/* 푸터 */
+.footer {
+  background: #0d2b45;
+  color: #ccc;
+  text-align: center;
+  padding: 20px;
+  margin-top: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- 헤더 -->
+<div class="header">
+  <h1>미래화학 주식회사</h1>
+  <p>지속 가능한 소재 혁신을 선도합니다</p>
+</div>
+
+<!-- 메뉴 -->
+<div class="topnav">
+  <a href="#">회사소개</a>
+  <a href="#">사업분야</a>
+  <a href="#">연구개발</a>
+  <a href="#">채용정보</a>
+</div>
+
+<!-- 본문 -->
+<div class="row">
+
+  <div class="leftcolumn">
+
+    <div class="card">
+      <h2>회사 개요</h2>
+      <img src="https://images.unsplash.com/photo-1581091012184-5c3c0c9d9d94">
+      <p>
+        미래화학은 친환경 소재와 첨단 화학 기술을 기반으로 
+        산업의 혁신을 이끄는 기업입니다.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>핵심 사업</h2>
+      <img src="https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0">
+      <ul>
+        <li>OLED 및 유기 전자 소재</li>
+        <li>배터리 소재</li>
+        <li>친환경 화학 제품</li>
+        <li>정밀 화학 공정</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>연구개발 (R&D)</h2>
+      <p>
+        차세대 유기 전자 소재와 양자 기술 기반 화학 연구를 수행하고 있습니다.
+      </p>
+    </div>
+
+  </div>
+
+  <div class="rightcolumn">
+
+    <div class="card">
+      <h3>공지사항</h3>
+      <p>2026 신입 연구원 채용 진행 중</p>
+    </div>
+
+    <div class="card">
+      <h3>사업 분야</h3>
+      <ul>
+        <li>디스플레이 소재</li>
+        <li>반도체 화학</li>
+        <li>에너지 소재</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>연락처</h3>
+      <p>02-1234-5678</p>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- 푸터 -->
+<div class="footer">
+  미래화학 주식회사 | 서울특별시<br>
+  © 2026 Future Chemical Corp.
+</div>
+
+</body>
+</html>
