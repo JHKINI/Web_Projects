@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>입력 양식 실습 -파트 구분</title>
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <div id="container">
+
+        <form>
+            <fieldset>
+                <legend>기본정보</legend>
+                <ul id="shipping">
+                    <li>
+                        <label for="user-name">이름 </label>
+                        <input type="text" id="user-name">
+                    </li>
+                    <li>
+                        <label for="sex">성별 </label>
+                        <input type="radio" id="woman" name="sex">여자
+                        <input type="radio" id="man" name="sex">남자
+                    </li>
+                    <li>
+                        <label for="mail">이메일</label>
+                        <input type="email" id="mail">
+                    </li>
+                    <li>
+                        <label for="password">비밀번호</label>
+                        <input type="password" id="password">
+                    </li>
+                    </ul>
+            </fieldset>
+            <fieldset>
+                <legend>상세정보</legend>
+                <ul id="shi">
+                    <li>
+                        <label for="fav">좋아하는 음식 </label>
+                        <select id="fav">
+                            <option value="tteokbbokki"> 떡볶이</option>
+                            <option value="sundea"> 순대 </option>
+                    
+                    </select>
+                    </li>
+                
+                        <label>관심분야 </label>
+                        <input type="checkbox" id="security" name="interest" value="security">보안</label>
+                        <input type="checkbox" id="ai"name="interest" value="ai">인공지능</label>
+                        <input type="checkbox" id="net"name="interest" value="net">네트워크</label>
+                    </li>
+
+                    <li>
+
+                   <label for="selec">선택과목 </label>
+                    <select id="selec">
+                        <optgroup label="실습과목">
+                            <option value="html"> html5/css</option>
+                            <option value="java"> java</option>
+                            </optgroup>
+
+                        <optgroup label="이론과목">
+                            <option value="multi"> 멀티미디어개론</option>
+                            <option value="compu"> 컴퓨터개론</option>
+                            </optgroup>
+                    </select>
+
+                            </li>
+                </ul>
+            </fieldset>
+    <br>
+        <input type="submit" value="정보 제출하기" />
+        <input type="reset" value="다시작성" />
+    
+ 
+    </form>
+    </div>
+</body>
+
+</html>
