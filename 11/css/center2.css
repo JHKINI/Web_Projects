@@ -1,0 +1,21 @@
+.container{
+    height: 100vh;
+    width: 100%;
+
+    background: url('../images/bg5.jpg') no-repeat left top fixed;
+    background-size:cover; 
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  
+  
+}
+
+.content {
+    border-radius: 10px;
+    text-align: center;
+    background-color: rgb(177, 175, 175);
+    padding: 20px;
+}

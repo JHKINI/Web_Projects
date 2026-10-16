@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>플렉스-12</title>
+    <style>
+        .search-bar {
+            display: flex; /* 가로로 나란히 배치 */
+            gap: 10px;
+        }
+        /* flex-grow 로 남는 공간에 따른 입력상자와 버튼의 영역을 4:1 비율로 나누어 차지하도록 지정하기 */
+        .input-box{
+            flex-grow: 4;/*남은공간을1만큼가져감*/
+            /*flex : 4 1 0;와 동일한 결과*/ 
+            padding: 10px;
+        }
+        .search-btn{
+            flex-grow: 1;/*남은공간을1만큼가져감*/
+            padding: 10px;
+            background-color: aqua;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="search-bar">
+        <input type="text" class="input-box" placeholder="검색어를 입력하세요">
+        <button class="search-btn">검색</button>
+    </div>
+</body>
+</html>
