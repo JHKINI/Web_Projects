@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "../lab2"
+		},
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "labs",
+		"liveServer.settings.port": 5502
+	}
+}
